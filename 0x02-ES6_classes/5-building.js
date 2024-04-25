@@ -8,6 +8,6 @@ export default class Building {
   }
 
   evacuationWarningMessage() {
-    return `${this.constructor.name} says: Evacuate the building!`;
+    return `Evacuate the ${this.constructor.name}!`;
   }
 }
