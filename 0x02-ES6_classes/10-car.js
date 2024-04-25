@@ -3,9 +3,9 @@ const _carData = Symbol('carData');
 export default class Car {
   constructor(brand, motor, color) {
     this[_carData] = {
-      brand: brand,
-      motor: motor,
-      color: color
+      brand,
+      motor,
+      color,
     };
   }
 
