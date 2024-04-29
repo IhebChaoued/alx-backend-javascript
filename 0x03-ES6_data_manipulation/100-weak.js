@@ -1,6 +1,6 @@
 const weakMap = new WeakMap();
 
-function queryAPI(endpoint) {
+function queryAPI() {
 
 }
 
