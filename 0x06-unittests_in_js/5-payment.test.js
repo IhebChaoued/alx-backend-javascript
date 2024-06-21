@@ -1,35 +1,23 @@
-const { expect } = require('chai');
-const sinon = require('sinon');
 const sendPaymentRequestToApi = require('./5-payment');
+const { describe, it } = require('mocha');
+const sinon = require('sinon');
+const expect = require('chai').expect;
 
-describe('sendPaymentRequestToApi', () => {
-  let consoleStub;
-
-  beforeEach(() => {
-    // Create a spy on console.log to capture its output
-    consoleStub = sinon.stub(console, 'log');
+describe('sendPaymentRequestToApi', function () {
+  beforeEach('Set up spy to use for each test', function () {
+    sinon.spy(console, 'log');
   });
-
-  afterEach(() => {
-    // Restore the original console.log function after each test
-    consoleStub.restore();
+  afterEach('restore spy after each test', function () {
+    console.log.restore();
   });
+  it('check that console.log is called with the right arg', function () {
+    sendPaymentRequestToApi(80, 30);
 
-  it('should log the correct sum message for 100 and 20', () => {
-    // Call the function under test
-    sendPaymentRequestToApi(100, 20);
-
-    // Assertions
-    expect(consoleStub.calledOnce).to.be.true;
-    expect(consoleStub.firstCall.args[0]).to.equal('The total is: 120');
+    expect(console.log.withArgs('The total is: 110').calledOnce).to.be.true;
   });
+  it('check that console.log is called with the right arg', function () {
+    sendPaymentRequestToApi(60, 10);
 
-  it('should log the correct sum message for 10 and 10', () => {
-    // Call the function under test
-    sendPaymentRequestToApi(10, 10);
-
-    // Assertions
-    expect(consoleStub.calledOnce).to.be.true;
-    expect(consoleStub.firstCall.args[0]).to.equal('The total is: 20');
+    expect(console.log.withArgs('The total is: 70').calledOnce).to.be.true;
   });
 });
